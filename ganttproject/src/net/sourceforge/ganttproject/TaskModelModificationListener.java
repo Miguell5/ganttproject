@@ -17,13 +17,15 @@ You should have received a copy of the GNU General Public License
 along with GanttProject.  If not, see <http://www.gnu.org/licenses/>.
  */
 package net.sourceforge.ganttproject;
-
+import net.sourceforge.ganttproject.task.*;
 import net.sourceforge.ganttproject.gui.UIFacade;
 import net.sourceforge.ganttproject.task.event.TaskDependencyEvent;
 import net.sourceforge.ganttproject.task.event.TaskHierarchyEvent;
 import net.sourceforge.ganttproject.task.event.TaskListenerAdapter;
 import net.sourceforge.ganttproject.task.event.TaskPropertyEvent;
 import net.sourceforge.ganttproject.task.event.TaskScheduleEvent;
+import javax.swing.*;
+import net.sourceforge.ganttproject.*;
 
 public class TaskModelModificationListener extends TaskListenerAdapter {
   private IGanttProject myGanttProject;
@@ -83,5 +85,9 @@ public class TaskModelModificationListener extends TaskListenerAdapter {
   public void taskProgressChanged(TaskPropertyEvent e) {
     myGanttProject.setModified();
     e.getTask().getManager().getAlgorithmCollection().getRecalculateTaskCompletionPercentageAlgorithm().run(e.getTask());
+    TaskImpl tmp = (TaskImpl) e.getTask();
+    if(tmp.getCompletionPercentage()==100 ){
+      myGanttProject.removeTask(e.getTask());
+    }
   }
 }

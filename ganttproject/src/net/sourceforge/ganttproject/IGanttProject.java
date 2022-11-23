@@ -20,7 +20,7 @@ package net.sourceforge.ganttproject;
 
 import java.io.IOException;
 import java.util.List;
-
+import net.sourceforge.ganttproject.task.*;
 import biz.ganttproject.core.calendar.GPCalendarCalc;
 import biz.ganttproject.core.time.TimeUnitStack;
 import net.sourceforge.ganttproject.document.Document;
@@ -71,7 +71,7 @@ public interface IGanttProject {
   TimeUnitStack getTimeUnitStack();
 
   void setModified();
-
+   void removeTask(Task tasktoRemove);
   void setModified(boolean modified);
 
   void close();

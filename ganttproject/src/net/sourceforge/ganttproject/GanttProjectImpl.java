@@ -39,6 +39,9 @@ import net.sourceforge.ganttproject.task.Task;
 import net.sourceforge.ganttproject.task.TaskContainmentHierarchyFacade;
 import net.sourceforge.ganttproject.task.TaskManager;
 import net.sourceforge.ganttproject.task.TaskManagerConfig;
+import net.sourceforge.ganttproject.task.*;
+import net.sourceforge.ganttproject.task.event.*;
+import javax.swing.*;
 
 import java.awt.*;
 import java.io.IOException;
@@ -75,6 +78,10 @@ public class GanttProjectImpl implements IGanttProject {
         setModified();
       }
     });
+  }
+  @Override
+  public void removeTask(Task tasktoRemove){
+
   }
 
   @Override

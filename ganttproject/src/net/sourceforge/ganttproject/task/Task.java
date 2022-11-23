@@ -112,6 +112,8 @@ public interface Task extends MutableTask {
 
   String getName();
 
+  //boolean isVisible();
+
   boolean isMilestone();
 
   Priority getPriority();

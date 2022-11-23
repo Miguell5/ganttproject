@@ -81,6 +81,7 @@ import net.sourceforge.ganttproject.task.TaskContainmentHierarchyFacade;
 import net.sourceforge.ganttproject.task.TaskManager;
 import net.sourceforge.ganttproject.task.TaskManagerConfig;
 import net.sourceforge.ganttproject.task.TaskManagerImpl;
+import net.sourceforge.ganttproject.task.*;
 
 import javax.annotation.Nullable;
 import javax.swing.*;
@@ -107,6 +108,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.regex.Pattern;
+
 
 /**
  * Main frame of the project
@@ -435,6 +437,12 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
     UIUtil.pushAction(getTabs(), true, viewCycleBackwardAction.getKeyStroke(), viewCycleBackwardAction);
   }
 
+ public void removeTask(Task tasktoRemove){
+   TaskManagerImpl tmp = (TaskManagerImpl) myTaskManager;
+   tmp.deleteTask(tasktoRemove);
+   JFrame jFrame = new JFrame();
+   JOptionPane.showMessageDialog(jFrame, "TESTE");
+ }
 
   private void restoreBounds() {
     if (options.isLoaded()) {

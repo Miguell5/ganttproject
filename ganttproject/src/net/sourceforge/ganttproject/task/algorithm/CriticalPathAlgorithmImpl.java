@@ -30,7 +30,6 @@ import java.util.logging.Logger;
 
 public class CriticalPathAlgorithmImpl implements CriticalPathAlgorithm {
   private static final Logger ourLogger = GPLogger.getLogger(CriticalPathAlgorithm.class);
-
   private final TaskManager myTaskManager;
   private final GPCalendarCalc myCalendar;
 

@@ -56,6 +56,10 @@ public class TaskSelectionManager implements TaskSelectionContext {
     myTaskManager = taskManager;
   }
 
+  public void selectionChanged(){
+
+  }
+
   public void setUserInputConsumer(Object consumer) {
     if (consumer != myUserInputConsumer) {
       fireUserInputConsumerChanged();
@@ -105,8 +109,8 @@ public class TaskSelectionManager implements TaskSelectionContext {
       }
     });
     clear();
-    for (Task t : tasks) {
-      addTask(t);
+    for (Task  t : tasks) {
+        addTask(t);
     }
   }
   /**
