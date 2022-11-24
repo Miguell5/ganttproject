@@ -39,8 +39,6 @@ import net.sourceforge.ganttproject.task.TaskManager;
  * @author bard
  */
 public interface IGanttProject {
-
-  void saveTasks();
   void restoreCompletedTasks();
   void removeCompletedTaskArray(Task task);
   boolean isInCompletedTaskArray(Task task);

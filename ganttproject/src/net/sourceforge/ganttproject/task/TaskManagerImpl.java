@@ -429,13 +429,19 @@ public class TaskManagerImpl implements TaskManager {
 
   @Override
   public void registerTask(Task task) {
-    JFrame jFrame2 = new JFrame();
-    JOptionPane.showMessageDialog(jFrame2, "IDE PO CRL");
     int taskID = task.getTaskID();
     assert myTaskMap.getTask(taskID) == null : "There is a task that already has the ID " + taskID;
       myTaskMap.addTask(task);
       myMaxID.set(Math.max(taskID + 1, myMaxID.get()));
     myDependencyGraph.addTask(task);
+  }
+  public void restoreTask(Task task) {
+    int taskID = task.getTaskID();
+    assert myTaskMap.getTask(taskID) == null : "There is a task that already has the ID " + taskID;
+    myTaskMap.addTask(task);
+    myMaxID.set(Math.max(taskID + 1, myMaxID.get()));
+    myDependencyGraph.addTask(task);
+    //fireTaskAdded(task);
   }
 
   boolean isRegistered(TaskImpl task) {

@@ -161,9 +161,7 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
 
   private final ZoomActionSet myZoomActions;
 
-  private  TaskManager myTaskManager;
-
-  private  TaskManager myTaskManager2;
+  private final  TaskManager myTaskManager;
   private ArrayList<Task> completedTasks = new ArrayList<Task>();
 
   private final FacadeInvalidator myFacadeInvalidator;
@@ -455,16 +453,15 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
     if(isInCompletedTaskArray(task))
       completedTasks.remove(task);
   }
-  public void saveTasks(){
-    myTaskManager2 = myTaskManager;
-  }
   public void hideCompletedTasks(){
     for(Task t: completedTasks){
       removeTask(t);
     }
   }
   public void restoreCompletedTasks() {
-   myTaskManager = myTaskManager2;
+    for(Task t: completedTasks){
+      addTask(t);
+    }
   }
   public boolean getVisibility(){return visibility;}
  public void removeTask(Task tasktoRemove){
@@ -473,14 +470,14 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
    JFrame jFrame = new JFrame();
    JOptionPane.showMessageDialog(jFrame, "removeTask");
  }
-/**
+
   public void addTask(Task tasktoAdd){
     TaskManagerImpl tmp = (TaskManagerImpl) myTaskManager;
-    tmp.registerTask(tasktoAdd);
+    tmp.restoreTask(tasktoAdd);
     JFrame jFrame = new JFrame();
     JOptionPane.showMessageDialog(jFrame, "restoreTask");
   }
-*/
+
   private void restoreBounds() {
     if (options.isLoaded()) {
       if (options.isMaximized()) {

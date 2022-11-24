@@ -79,20 +79,16 @@ public class GanttProjectImpl implements IGanttProject {
       }
     });
   }
-  public void removeCompletedTaskArray(Task task) {}
+  public void removeCompletedTaskArray(Task task) {return;}
   public boolean isInCompletedTaskArray(Task task) {return false;}
-  public void addCompletedTaskArray(Task task){}
-  public void hideCompletedTasks() {}
+  public void addCompletedTaskArray(Task task){return;}
+  public void hideCompletedTasks() {return;}
   public void changeVisibility(){
-
+return;
   }
-  public void saveTasks(){
-
-  }
-
-  public void restoreCompletedTasks(){ }
+  public void restoreCompletedTasks(){return; }
   public void removeTask(Task tasktoRemove){
-
+return;
   }
   public boolean getVisibility(){
   return false;

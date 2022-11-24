@@ -47,6 +47,7 @@ import java.util.Map;
  * @author bard
  */
 public interface TaskManager {
+  void restoreTask(Task task);
   abstract class TaskBuilder {
     String myName;
     Integer myId;

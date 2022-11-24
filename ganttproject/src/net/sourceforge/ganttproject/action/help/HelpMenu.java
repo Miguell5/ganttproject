@@ -86,7 +86,6 @@ public class HelpMenu {
     public void actionPerformed(ActionEvent e) {
       myProject.changeVisibility();
       if(!myProject.getVisibility()){
-        myProject.saveTasks();
         myProject.hideCompletedTasks();
       }
       else{
