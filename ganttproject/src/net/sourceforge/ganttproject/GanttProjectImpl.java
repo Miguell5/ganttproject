@@ -79,9 +79,23 @@ public class GanttProjectImpl implements IGanttProject {
       }
     });
   }
-  @Override
+  public void removeCompletedTaskArray(Task task) {}
+  public boolean isInCompletedTaskArray(Task task) {return false;}
+  public void addCompletedTaskArray(Task task){}
+  public void hideCompletedTasks() {}
+  public void changeVisibility(){
+
+  }
+  public void saveTasks(){
+
+  }
+
+  public void restoreCompletedTasks(){ }
   public void removeTask(Task tasktoRemove){
 
+  }
+  public boolean getVisibility(){
+  return false;
   }
 
   @Override

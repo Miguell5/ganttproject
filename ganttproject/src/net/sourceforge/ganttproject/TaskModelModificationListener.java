@@ -86,8 +86,11 @@ public class TaskModelModificationListener extends TaskListenerAdapter {
     myGanttProject.setModified();
     e.getTask().getManager().getAlgorithmCollection().getRecalculateTaskCompletionPercentageAlgorithm().run(e.getTask());
     TaskImpl tmp = (TaskImpl) e.getTask();
-    if(tmp.getCompletionPercentage()==100 ){
-      myGanttProject.removeTask(e.getTask());
+    if(tmp.getCompletionPercentage() == 100){
+      myGanttProject.addCompletedTaskArray(e.getTask());
+    }
+    else if (myGanttProject.isInCompletedTaskArray(e.getTask())){
+      myGanttProject.removeCompletedTaskArray(e.getTask());
     }
   }
 }

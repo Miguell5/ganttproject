@@ -3,7 +3,7 @@
  *
  */
 package net.sourceforge.ganttproject.task;
-
+import javax.swing.*;
 import biz.ganttproject.core.calendar.AlwaysWorkingTimeCalendarImpl;
 import biz.ganttproject.core.calendar.GPCalendarCalc;
 import biz.ganttproject.core.calendar.GPCalendarListener;
@@ -429,10 +429,12 @@ public class TaskManagerImpl implements TaskManager {
 
   @Override
   public void registerTask(Task task) {
+    JFrame jFrame2 = new JFrame();
+    JOptionPane.showMessageDialog(jFrame2, "IDE PO CRL");
     int taskID = task.getTaskID();
     assert myTaskMap.getTask(taskID) == null : "There is a task that already has the ID " + taskID;
-    myTaskMap.addTask(task);
-    myMaxID.set(Math.max(taskID + 1, myMaxID.get()));
+      myTaskMap.addTask(task);
+      myMaxID.set(Math.max(taskID + 1, myMaxID.get()));
     myDependencyGraph.addTask(task);
   }
 
@@ -1256,6 +1258,7 @@ public class TaskManagerImpl implements TaskManager {
 
   @Override
   public DependencyGraph getDependencyGraph() {
+
     return myDependencyGraph;
   }
 }

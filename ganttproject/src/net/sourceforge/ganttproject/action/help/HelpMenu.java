@@ -51,22 +51,53 @@ import net.sourceforge.ganttproject.language.GanttLanguage;
 public class HelpMenu {
 
   private final AboutAction myAboutAction;
+  private final VisibilityAction myVisibilityAction;
   private final ViewLogAction myViewLogAction;
   private final RecoverLastProjectAction myRecoverAction;
 
   public HelpMenu(IGanttProject project, UIFacade uiFacade, ProjectUIFacade projectUiFacade) {
     myAboutAction = new AboutAction(uiFacade);
     myViewLogAction = new ViewLogAction(uiFacade);
+
+    myVisibilityAction = new VisibilityAction(project);
+
     myRecoverAction = new RecoverLastProjectAction(project, uiFacade, projectUiFacade);
   }
 
   public JMenu createMenu() {
     JMenu result = UIUtil.createTooltiplessJMenu(GPAction.createVoidAction("help"));
     result.add(myAboutAction);
+    result.add(myVisibilityAction);
     result.add(myViewLogAction);
     result.add(myRecoverAction);
     return result;
   }
+  private static class VisibilityAction extends GPAction {
+
+
+    private final IGanttProject myProject;
+
+    VisibilityAction(IGanttProject project) {
+      super("visibility");
+      myProject = project;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+      myProject.changeVisibility();
+      if(!myProject.getVisibility()){
+        myProject.saveTasks();
+        myProject.hideCompletedTasks();
+      }
+      else{
+         myProject.restoreCompletedTasks();
+      }
+
+    }
+  }
+
+
+
 
   private static class AboutAction extends GPAction {
     private final UIFacade myUiFacade;

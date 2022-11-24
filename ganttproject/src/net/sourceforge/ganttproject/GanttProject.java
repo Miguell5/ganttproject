@@ -121,6 +121,8 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
    */
   private GanttTree2 tree;
 
+  private boolean visibility;
+
   /**
    * GanttGraphicArea for the calendar with Gantt
    */
@@ -159,7 +161,10 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
 
   private final ZoomActionSet myZoomActions;
 
-  private final TaskManager myTaskManager;
+  private  TaskManager myTaskManager;
+
+  private  TaskManager myTaskManager2;
+  private ArrayList<Task> completedTasks = new ArrayList<Task>();
 
   private final FacadeInvalidator myFacadeInvalidator;
 
@@ -194,7 +199,7 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
     System.err.println("Creating main frame...");
     ToolTipManager.sharedInstance().setInitialDelay(200);
     ToolTipManager.sharedInstance().setDismissDelay(60000);
-
+    visibility = true;
     myCalendar.addListener(new GPCalendarListener() {
       @Override
       public void onCalendarChange() {
@@ -267,11 +272,11 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
         return GanttProject.this.getTaskContainment();
       }
     }, taskConfig);
+
     addProjectEventListener(myTaskManager.getProjectListener());
     getActiveCalendar().addListener(myTaskManager.getCalendarListener());
     ImageIcon icon = new ImageIcon(getClass().getResource("/icons/ganttproject.png"));
     setIconImage(icon.getImage());
-
 
     myFacadeInvalidator = new FacadeInvalidator(getTree().getModel(), myRowHeightAligners);
     getProject().addProjectEventListener(myFacadeInvalidator);
@@ -436,14 +441,46 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
     GPAction viewCycleBackwardAction = new ViewCycleAction(getViewManager(), false);
     UIUtil.pushAction(getTabs(), true, viewCycleBackwardAction.getKeyStroke(), viewCycleBackwardAction);
   }
-
+  public void changeVisibility(){
+    visibility = !visibility;
+  }
+  public void addCompletedTaskArray(Task task){
+    if(!isInCompletedTaskArray(task))
+      completedTasks.add(task);
+  }
+  public boolean isInCompletedTaskArray(Task task){
+    return completedTasks.contains(task);
+  }
+  public void removeCompletedTaskArray(Task task){
+    if(isInCompletedTaskArray(task))
+      completedTasks.remove(task);
+  }
+  public void saveTasks(){
+    myTaskManager2 = myTaskManager;
+  }
+  public void hideCompletedTasks(){
+    for(Task t: completedTasks){
+      removeTask(t);
+    }
+  }
+  public void restoreCompletedTasks() {
+   myTaskManager = myTaskManager2;
+  }
+  public boolean getVisibility(){return visibility;}
  public void removeTask(Task tasktoRemove){
    TaskManagerImpl tmp = (TaskManagerImpl) myTaskManager;
    tmp.deleteTask(tasktoRemove);
    JFrame jFrame = new JFrame();
-   JOptionPane.showMessageDialog(jFrame, "TESTE");
+   JOptionPane.showMessageDialog(jFrame, "removeTask");
  }
-
+/**
+  public void addTask(Task tasktoAdd){
+    TaskManagerImpl tmp = (TaskManagerImpl) myTaskManager;
+    tmp.registerTask(tasktoAdd);
+    JFrame jFrame = new JFrame();
+    JOptionPane.showMessageDialog(jFrame, "restoreTask");
+  }
+*/
   private void restoreBounds() {
     if (options.isLoaded()) {
       if (options.isMaximized()) {

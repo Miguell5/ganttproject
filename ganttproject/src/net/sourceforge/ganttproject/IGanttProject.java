@@ -40,6 +40,16 @@ import net.sourceforge.ganttproject.task.TaskManager;
  */
 public interface IGanttProject {
 
+  void saveTasks();
+  void restoreCompletedTasks();
+  void removeCompletedTaskArray(Task task);
+  boolean isInCompletedTaskArray(Task task);
+  void addCompletedTaskArray(Task task);
+  void hideCompletedTasks();
+  void changeVisibility();
+  boolean  getVisibility();
+
+  void removeTask(Task tasktoRemove);
   String getProjectName();
 
   void setProjectName(String projectName);
@@ -71,7 +81,6 @@ public interface IGanttProject {
   TimeUnitStack getTimeUnitStack();
 
   void setModified();
-   void removeTask(Task tasktoRemove);
   void setModified(boolean modified);
 
   void close();

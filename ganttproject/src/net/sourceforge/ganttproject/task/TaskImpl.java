@@ -195,7 +195,6 @@ public class TaskImpl implements Task {
 
     recalculateActivities();
   }
-
   @Override
   public Task unpluggedClone() {
     TaskImpl result = new TaskImpl(myManager, this, true) {
