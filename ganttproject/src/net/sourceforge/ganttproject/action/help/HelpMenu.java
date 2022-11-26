@@ -85,12 +85,10 @@ public class HelpMenu {
     @Override
     public void actionPerformed(ActionEvent e) {
       myProject.changeVisibility();
-      if(!myProject.getVisibility()){
-        myProject.hideCompletedTasks();
-      }
-      else{
-         myProject.restoreCompletedTasks();
-      }
+      if(myProject.getVisibility())
+        myProject.highlightCompletedTask();
+      else
+        myProject.restoreColor();
 
     }
   }

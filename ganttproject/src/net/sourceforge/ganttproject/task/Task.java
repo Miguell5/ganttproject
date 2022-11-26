@@ -137,6 +137,10 @@ public interface Task extends MutableTask {
    * @return a color representing this Task (could be a custom color, milestone
    *         color, super task color or default color)
    */
+
+  void setHighlight();
+
+  void restoreColor();
   Color getColor();
 
   String getNotes();

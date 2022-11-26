@@ -70,6 +70,8 @@ import java.util.List;
  * @author bard
  */
 public class TaskImpl implements Task {
+
+  private boolean highlight;
   private final int myID;
 
   private final TaskManagerImpl myManager;
@@ -143,7 +145,7 @@ public class TaskImpl implements Task {
   protected TaskImpl(TaskManagerImpl taskManager, int taskID) {
     myManager = taskManager;
     myID = taskID;
-
+    highlight = false;
     myAssignments = new ResourceAssignmentCollectionImpl(this, myManager.getConfig().getResourceManager());
     myDependencySlice = new TaskDependencySliceImpl(this, myManager.getDependencyCollection(), TaskDependencySlice.COMPLETE_SLICE_FXN);
     myDependencySliceAsDependant = new TaskDependencySliceAsDependant(this, myManager.getDependencyCollection());
@@ -454,12 +456,25 @@ public class TaskImpl implements Task {
     if (result == null) {
       if (isMilestone() || myManager.getTaskHierarchy().hasNestedTasks(this)) {
         result = Color.BLACK;
-      } else {
-        result = myManager.getConfig().getDefaultColor();
       }
+      else if (getCompletionPercentage()==100 && highlight){
+        result = Color.RED;
+      }
+        else
+        result = myManager.getConfig().getDefaultColor();
+
     }
     return result;
   }
+
+  public void setHighlight() {
+    highlight = true;
+  }
+
+  public void restoreColor() {
+    highlight = false;
+  }
+
 
   @Override
   public String getNotes() {

@@ -39,15 +39,15 @@ import net.sourceforge.ganttproject.task.TaskManager;
  * @author bard
  */
 public interface IGanttProject {
-  void restoreCompletedTasks();
+  void highlightCompletedTask();
+  void restoreColor();
   void removeCompletedTaskArray(Task task);
   boolean isInCompletedTaskArray(Task task);
   void addCompletedTaskArray(Task task);
-  void hideCompletedTasks();
   void changeVisibility();
   boolean  getVisibility();
 
-  void removeTask(Task tasktoRemove);
+
   String getProjectName();
 
   void setProjectName(String projectName);

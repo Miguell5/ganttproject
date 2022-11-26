@@ -197,7 +197,7 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
     System.err.println("Creating main frame...");
     ToolTipManager.sharedInstance().setInitialDelay(200);
     ToolTipManager.sharedInstance().setDismissDelay(60000);
-    visibility = true;
+    visibility = false;
     myCalendar.addListener(new GPCalendarListener() {
       @Override
       public void onCalendarChange() {
@@ -443,26 +443,30 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
     visibility = !visibility;
   }
   public void addCompletedTaskArray(Task task){
-    if(!isInCompletedTaskArray(task))
+    if(!isInCompletedTaskArray(task)) {
       completedTasks.add(task);
+      if(visibility)
+      task.setHighlight();
+    }
   }
   public boolean isInCompletedTaskArray(Task task){
     return completedTasks.contains(task);
   }
   public void removeCompletedTaskArray(Task task){
-    if(isInCompletedTaskArray(task))
+    if(isInCompletedTaskArray(task)) {
       completedTasks.remove(task);
-  }
-  public void hideCompletedTasks(){
-    for(Task t: completedTasks){
-      removeTask(t);
+      task.restoreColor();
     }
   }
-  public void restoreCompletedTasks() {
-    for(Task t: completedTasks){
-      addTask(t);
-    }
+  public void highlightCompletedTask(){
+    for(Task t: completedTasks)
+      t.setHighlight();
   }
+  public void restoreColor() {
+    for(Task t: completedTasks)
+      t.restoreColor();
+  }
+
   public boolean getVisibility(){return visibility;}
  public void removeTask(Task tasktoRemove){
    TaskManagerImpl tmp = (TaskManagerImpl) myTaskManager;
