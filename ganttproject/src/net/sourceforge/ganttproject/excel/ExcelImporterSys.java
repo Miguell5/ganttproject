@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Iterator;
 
 import javax.swing.*;
@@ -27,7 +28,7 @@ public class ExcelImporterSys {
     private XSSFWorkbook wb;
 
     /**     CustomPropertyHolder = HumanResource interface      */
-    private ArrayList<CustomPropertyHolder> resources;
+    private List<HumanResource> resources;
 
     public ExcelImporterSys(String filePath){
         this.resources = new ArrayList<>();
@@ -42,6 +43,20 @@ public class ExcelImporterSys {
             JOptionPane.showMessageDialog(jFrame2, e.getMessage());
         }
     }
+
+    /*public ExcelImporterSys(String fileName){
+        this.resources = new ArrayList<>();
+        try{
+            FileInputStream fp = new FileInputStream(filePath);
+            wb = new XSSFWorkbook(fp);
+        }catch(FileNotFoundException e){
+            JFrame jFrame = new JFrame();
+            JOptionPane.showMessageDialog(jFrame, e.getMessage());
+        }catch (IOException e){
+            JFrame jFrame2 = new JFrame();
+            JOptionPane.showMessageDialog(jFrame2, e.getMessage());
+        }
+    }*/
 
     public XSSFWorkbook getBook(){
         return wb;
@@ -64,7 +79,7 @@ public class ExcelImporterSys {
         return rowCells;
     }
 
-    public void makeResources(int sheetIndex){
+    public void makeResources(HumanResourceManager myHRManager, int sheetIndex){
         Iterator<Row> it = getRowIterator(sheetIndex);
         ArrayList<Cell> resourceInfo = new ArrayList<>();
         while(it.hasNext()){
@@ -73,19 +88,21 @@ public class ExcelImporterSys {
             String name = resourceInfo.get(0).toString();
             String hourlyFee = resourceInfo.get(1).toString();
             String role = resourceInfo.get(2).toString();
-            //resources.add( new Resource(name, hourlyFee, role) );
-            //HumanResourceManager
-            //CustomColumns
-            //RoleManagerImpl
-          //  CustomPropertyManager cc = new CustomColumnsManager();
-            //HumanResourceManager resourceManager = new HumanResourceManager(role, cc);
-            //resourceManager.add(new )
-            //HumanResource resource = new HumanResource(name, -1, resourceManager);
+            HumanResource resource = myHRManager.create(name, -1);
+            myHRManager.add(resource);
         }
     }
 
     /*private boolean checkRoleExistance(Role role){
 
     }*/
+
+    public void resourceNames(){
+        Iterator<HumanResource> it = resources.iterator();
+        while(it.hasNext()){
+            HumanResource r = it.next();
+            System.out.println(r.getName());
+        }
+    }
 
 }
