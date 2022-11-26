@@ -42,6 +42,8 @@ import net.sourceforge.ganttproject.gui.UIUtil;
 import net.sourceforge.ganttproject.gui.ViewLogDialog;
 import net.sourceforge.ganttproject.gui.about.AboutDialog2;
 import net.sourceforge.ganttproject.language.GanttLanguage;
+import net.sourceforge.ganttproject.excel.*;
+import net.sourceforge.ganttproject.resource.HumanResourceManager;
 
 /**
  * Collection of actions from Help menu.
@@ -54,6 +56,7 @@ public class HelpMenu {
   private final VisibilityAction myVisibilityAction;
   private final ViewLogAction myViewLogAction;
   private final RecoverLastProjectAction myRecoverAction;
+  private final ImportExcelAction myExcelAction;
 
   public HelpMenu(IGanttProject project, UIFacade uiFacade, ProjectUIFacade projectUiFacade) {
     myAboutAction = new AboutAction(uiFacade);
@@ -62,6 +65,8 @@ public class HelpMenu {
     myVisibilityAction = new VisibilityAction(project);
 
     myRecoverAction = new RecoverLastProjectAction(project, uiFacade, projectUiFacade);
+
+    myExcelAction = new ImportExcelAction(project);
   }
 
   public JMenu createMenu() {
@@ -70,8 +75,10 @@ public class HelpMenu {
     result.add(myVisibilityAction);
     result.add(myViewLogAction);
     result.add(myRecoverAction);
+    result.add(myExcelAction);
     return result;
   }
+
   private static class VisibilityAction extends GPAction {
 
 
@@ -93,6 +100,22 @@ public class HelpMenu {
     }
   }
 
+  private static class ImportExcelAction extends GPAction {
+
+    private final IGanttProject myProject;
+
+    ImportExcelAction(IGanttProject project) {
+      super("importExcel");
+      myProject = project;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+      ExcelImporterSys sys = new ExcelImporterSys("C:\\Users\\dany5\\Desktop\\ApachePOITest\\test.xlsx");
+      HumanResourceManager myHRManager = myProject.getHumanResourceManager();
+      sys.makeResources(myHRManager, 0);
+    }
+  }
 
 
 
