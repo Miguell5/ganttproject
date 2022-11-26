@@ -445,8 +445,9 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
   public void addCompletedTaskArray(Task task){
     if(!isInCompletedTaskArray(task)) {
       completedTasks.add(task);
-      if(visibility)
-      task.setHighlight();
+      if(visibility) {
+        task.setHighlight();
+      }
     }
   }
   public boolean isInCompletedTaskArray(Task task){
