@@ -459,10 +459,14 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
     }
   }
   public void highlightCompletedTask(){
+    JFrame jFrame = new JFrame();
+    JOptionPane.showMessageDialog(jFrame, "Highlighting completed tasks");
     for(Task t: completedTasks)
       t.setHighlight();
   }
   public void restoreColor() {
+    JFrame jFrame = new JFrame();
+    JOptionPane.showMessageDialog(jFrame, "Applying default color");
     for(Task t: completedTasks)
       t.restoreColor();
   }
