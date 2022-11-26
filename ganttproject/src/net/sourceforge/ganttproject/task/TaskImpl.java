@@ -65,7 +65,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-
+import javax.swing.*;
 /**
  * @author bard
  */
@@ -453,12 +453,15 @@ public class TaskImpl implements Task {
   @Override
   public Color getColor() {
     Color result = myColor;
+
+    if (getCompletionPercentage()==100 && highlight){
+      result = Color.RED;
+    }
     if (result == null) {
+     // System.out.println("PROGRESS ->"+getCompletionPercentage());
+      //System.out.println("highlight ->"+highlight);
       if (isMilestone() || myManager.getTaskHierarchy().hasNestedTasks(this)) {
         result = Color.BLACK;
-      }
-      else if (getCompletionPercentage()==100 && highlight){
-        result = Color.RED;
       }
         else
         result = myManager.getConfig().getDefaultColor();

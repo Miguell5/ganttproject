@@ -111,7 +111,7 @@ public class HelpMenu {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-      ExcelImporterSys sys = new ExcelImporterSys("C:\\Users\\dany5\\Desktop\\ApachePOITest\\test.xlsx");
+      ExcelImporterSys sys = new ExcelImporterSys("C:\\Users\\Miguel\\Desktop\\test.xlsx");
       HumanResourceManager myHRManager = myProject.getHumanResourceManager();
       sys.makeResources(myHRManager, 0);
     }
