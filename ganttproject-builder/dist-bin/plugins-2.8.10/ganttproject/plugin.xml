@@ -90,25 +90,25 @@
       <library name="lib/core/swingx-1.6.4.jar">
          <export name="*"/>
       </library>
-      <library name="lib/core/poi-5.2.3.jar">
+      <library name="lib/core/poi-3.9.jar">
          <export name="*"/>
       </library>
-      <library name="lib/core/poi-ooxml-5.2.3.jar">
+      <library name="lib/core/poi-ooxml-3.9.jar">
          <export name="*"/>
       </library>
-      <library name="lib/core/xmlbeans-5.1.1.jar">
+      <library name="lib/core/poi-ooxml-schemas-3.9.jar">
+         <export name="*"/>
+      </library>
+      <library name="lib/core/dom4j-1.6.1.jar">
+         <export name="*"/>
+      </library>
+      <library name="lib/core/xmlbeans-2.3.0.jar">
          <export name="*"/>
       </library>
       <library name="lib/core/commons-collections4-4.4.jar">
          <export name="*"/>
       </library>
       <library name="lib/core/commons-io-2.11.0.jar">
-         <export name="*"/>
-      </library>
-      <library name="lib/core/log4j-api-2.18.0.jar">
-         <export name="*"/>
-      </library>
-      <library name="lib/core/log4j-core-2.18.0.jar">
          <export name="*"/>
       </library>
       <library name="data/resources/">
