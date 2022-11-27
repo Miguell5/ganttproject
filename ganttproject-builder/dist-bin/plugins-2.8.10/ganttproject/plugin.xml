@@ -24,15 +24,11 @@
       <library name="lib/core/commons-codec-1.10.jar">
          <export name="*"/>
       </library>
-      <library name="lib/core/commons-collections-3.2.1.jar">
-         <export name="*"/>
-      </library>
+
       <library name="lib/core/commons-csv.jar">
          <export name="*"/>
       </library>
-      <library name="lib/core/commons-io.jar">
-         <export name="*"/>
-      </library>
+
       <library name="lib/core/commons-lang-2.5.jar">
          <export name="*"/>
       </library>
@@ -110,6 +106,9 @@
          <export name="*"/>
       </library>
       <library name="lib/core/log4j-api-2.18.0.jar">
+         <export name="*"/>
+      </library>
+      <library name="lib/core/log4j-core-2.18.0.jar">
          <export name="*"/>
       </library>
       <library name="data/resources/">

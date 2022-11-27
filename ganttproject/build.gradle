@@ -18,6 +18,7 @@ dependencies {
     mavenDeps group: 'org.apache.poi', name: 'poi', version: '5.2.3'
     mavenDeps group: 'org.apache.poi', name: 'poi-ooxml', version: '5.2.3'
     mavenDeps group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.18.0'
+    mavenDeps group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.18.0'
 
 
     mavenDeps group: 'org.jdom', name: 'jdom', version:'1.1.+'
