@@ -14,8 +14,12 @@ dependencies {
 //  mavenDeps group: 'de.jensd', name: 'fontawesomefx-fontawesome', version: '4.6.3', transitive: true
     mavenDeps group: 'org.apache.httpcomponents', name: 'httpclient', version:'4.5.+'
     mavenDeps group: 'org.apache.httpcomponents', name: 'httpmime', version: '4.5.+'
+
     mavenDeps group: 'org.apache.poi', name: 'poi', version: '5.2.3'
     mavenDeps group: 'org.apache.poi', name: 'poi-ooxml', version: '5.2.3'
+    mavenDeps group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.11.0'
+    
+
     mavenDeps group: 'org.jdom', name: 'jdom', version:'1.1.+'
     mavenDeps group: 'net.sf.json-lib', name: 'json-lib', version:'2.4', classifier:'jdk15'
     mavenDeps group: 'xml-apis', name: 'xml-apis', version:'2.0.2'

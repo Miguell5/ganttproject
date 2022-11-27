@@ -94,6 +94,24 @@
       <library name="lib/core/swingx-1.6.4.jar">
          <export name="*"/>
       </library>
+      <library name="lib/core/poi-5.2.3.jar">
+         <export name="*"/>
+      </library>
+      <library name="lib/core/poi-ooxml-5.2.3.jar">
+         <export name="*"/>
+      </library>
+      <library name="lib/core/xmlbeans-5.1.1.jar">
+         <export name="*"/>
+      </library>
+      <library name="lib/core/commons-collections4-4.4.jar">
+         <export name="*"/>
+      </library>
+      <library name="lib/core/commons-io-2.11.0.jar">
+         <export name="*"/>
+      </library>
+      <library name="lib/core/log4j-api-2.18.0.jar">
+         <export name="*"/>
+      </library>
       <library name="data/resources/">
          <export name="*"/>
       </library>
