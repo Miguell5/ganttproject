@@ -37,7 +37,6 @@ public class HighLightTasks extends TaskTestCase {
   private final ColorOption myDefaultTaskColorOption;
     @Test
     void testHighLightTasks() {
-
     myDefaultTaskColorOption = new DefaultTaskColorOption(DEFAULT_TASK_COLOR);
     TaskImpl task1 = (TaskImpl) createTask();
     TaskImpl task2 = (TaskImpl) createTask();
