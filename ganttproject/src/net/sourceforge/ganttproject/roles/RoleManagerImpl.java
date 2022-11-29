@@ -136,6 +136,16 @@ public class RoleManagerImpl implements RoleManager {
   }
 
   @Override
+ public Role getRoleByName(String name){
+    Role[] enabledRoles = getEnabledRoles();
+    for (int i = 0; i < enabledRoles.length; i++) {
+      if (enabledRoles[i].getName().equalsIgnoreCase(name))
+        return enabledRoles[i];
+    }
+    return null;
+ }
+
+  @Override
   public void importData(RoleManager original) {
     myProjectRoleSet.importData(original.getProjectRoleSet());
     RoleSet[] originalRoleSets = original.getRoleSets();

@@ -56,6 +56,8 @@ public interface RoleManager {
 
   public Role getRole(String persistentID);
 
+  public Role getRoleByName(String name);
+
   public void importData(RoleManager roleManager);
 
   public void addRoleListener(Listener listener);

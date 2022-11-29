@@ -79,23 +79,43 @@ public class ExcelImporterSys {
         return rowCells;
     }
 
-    public void makeResources(HumanResourceManager myHRManager, int sheetIndex){
+    public void makeResources(HumanResourceManager myHRManager, RoleManager myRoleManager, int sheetIndex){
         Iterator<Row> it = getRowIterator(sheetIndex);
         ArrayList<Cell> resourceInfo = new ArrayList<>();
+        RoleSet projectRoleSet = myRoleManager.getProjectRoleSet();
         while(it.hasNext()){
             Row r = it.next();
             resourceInfo = getCellsInRow(r);
             String name = resourceInfo.get(0).toString();
             String hourlyFee = resourceInfo.get(1).toString();
-            String role = resourceInfo.get(2).toString();
-            HumanResource resource = myHRManager.create(name, -1);
-            myHRManager.add(resource);
+            String roleName = resourceInfo.get(2).toString();
+
+            HumanResourceManager.ResourceBuilder myResourceBuilder = myHRManager.newResourceBuilder();
+            Role newRole = null;
+            if(roleDoesntExist(myRoleManager,roleName)){
+                newRole = projectRoleSet.createRole(roleName);
+            }
+            else{
+                newRole = myRoleManager.getRoleByName(roleName);
+            }
+            String persistentID = newRole.getPersistentID();
+            HumanResource newResource = myResourceBuilder.withName(name).withID("-1")
+                            .withRole(persistentID).withStandardRate(hourlyFee).build();
+            //HumanResource resource = myHRManager.create(name, -1);
+            //myHRManager.add(resource);
+            resources.add(newResource);
         }
     }
 
-    /*private boolean checkRoleExistance(Role role){
-
-    }*/
+    private boolean roleDoesntExist(RoleManager myRoleManager, String roleName){
+        /*Role[] roles = myRoleManager.getProjectLevelRoles();
+        for(int i = 0; i < roles.length; i++){
+            if (roleName == roles[i].getName())
+                return false;
+        }
+        return true;*/
+        return (myRoleManager.getRoleByName(roleName) == null);
+    }
 
     public void resourceNames(){
         Iterator<HumanResource> it = resources.iterator();

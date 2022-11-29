@@ -44,6 +44,8 @@ import net.sourceforge.ganttproject.gui.about.AboutDialog2;
 import net.sourceforge.ganttproject.language.GanttLanguage;
 import net.sourceforge.ganttproject.excel.*;
 import net.sourceforge.ganttproject.resource.HumanResourceManager;
+import net.sourceforge.ganttproject.resource.*;
+import net.sourceforge.ganttproject.roles.*;
 
 /**
  * Collection of actions from Help menu.
@@ -113,7 +115,9 @@ public class HelpMenu {
     public void actionPerformed(ActionEvent e) {
       ExcelImporterSys sys = new ExcelImporterSys("test.xlsx");
       HumanResourceManager myHRManager = myProject.getHumanResourceManager();
-      sys.makeResources(myHRManager, 0);
+      RoleManager myRoleManager = myProject.getRoleManager();
+      sys.makeResources(myHRManager, myRoleManager, 0);
+      //sys.resourceNames();
     }
   }
 
