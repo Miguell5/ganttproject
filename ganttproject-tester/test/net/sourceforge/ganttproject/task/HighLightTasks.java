@@ -10,6 +10,7 @@ import net.sourceforge.ganttproject.task.Task;
 import net.sourceforge.ganttproject.task.TaskContainmentHierarchyFacade;
 import net.sourceforge.ganttproject.test.task.TaskTestCase;
 
+
 /**
  * Tests to simulate Tasks High Lighting when they are complete
  *
