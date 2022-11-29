@@ -1,8 +1,12 @@
 apply plugin: 'java'
 apply plugin: 'kotlin'
 
+ext {
+    libDir = 'lib'
+}
+
 dependencies {
-  mavenDeps group: 'junit', name: 'junit', version: '4.12'
+    testCompile "junit:junit:4.12"
   testCompile fileTree(dir: project.ext.libDir, include: ['*.jar'])
   testCompile project(':..:ganttproject')
   testCompile project(':..:biz.ganttproject.impex.msproject2')
