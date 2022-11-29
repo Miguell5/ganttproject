@@ -32,8 +32,11 @@ import net.sourceforge.ganttproject.test.task.TaskTestCase;
  *
  * @author Grupo abelhinha
  */
-public class CostAlgorithmTest extends TaskTestCase {
-  public void testSupertaskCost() {
+public class HighLightTasks extends TaskTestCase {
+  private static Color DEFAULT_TASK_COLOR = new Color(140, 182, 206);
+  private final ColorOption myDefaultTaskColorOption;
+    @Test
+    void testHighLightTasks() {
     TaskImpl task1 = (TaskImpl) createTask();
     TaskImpl task2 = (TaskImpl) createTask();
     TaskImpl task3 = (TaskImpl) createTask();
@@ -42,12 +45,15 @@ public class CostAlgorithmTest extends TaskTestCase {
     task2.setCompletionPercentage(50);
     task3.setCompletionPercentage(100);
     task4.setCompletionPercentage(5);
-    task1.setHighlightON()
-    task2.setHighlightON()
-    task3.setHighlightON()
-    task4.setHighlightON()
-
-  }
+    task1.setHighlightON();
+    task2.setHighlightON();
+    task3.setHighlightON();
+    task4.setHighlightON();
+    assert(task1.getColor() == COLOR.RED);
+    assert(task2.getColor() == DEFAULT_TASK_COLOR);
+    assert(task3.getColor() == COLOR.RED);
+    assert(task4.getColor() == DEFAULT_TASK_COLOR);
+    }
 
 
 }
