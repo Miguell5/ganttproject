@@ -23,11 +23,12 @@ public class ExcelImporterSys {
     //ERROR MESSAGES
     private static final String FILE_NOT_FOUND = "File not found!";
     private static final String INPUT_ERROR = "Input error!";
+    private static final int MAX_COLUMNS = 5;
 
     /**     Excel workbook      */
     private XSSFWorkbook wb;
 
-    /**     CustomPropertyHolder = HumanResource interface      */
+
     private List<HumanResource> resources;
 
     public ExcelImporterSys(String filePath){
@@ -58,13 +59,14 @@ public class ExcelImporterSys {
         ArrayList<Cell> rowCells = new ArrayList<>();
         Cell cell = null;
         int i;
-        for(i = 0; i < 5; i++){
+        for(i = 0; i < MAX_COLUMNS; i++){
             cell = row.getCell(i);
             rowCells.add(cell);
         }
         return rowCells;
     }
 
+    /** Creates resources from the excel file */
     public void makeResources(HumanResourceManager myHRManager, RoleManager myRoleManager, int sheetIndex){
         Iterator<Row> it = getRowIterator(sheetIndex);
         ArrayList<Cell> resourceInfo = new ArrayList<>();
@@ -80,12 +82,12 @@ public class ExcelImporterSys {
 
             HumanResourceManager.ResourceBuilder myResourceBuilder = myHRManager.newResourceBuilder();
             Role newRole = null;
-            if(roleDoesntExist(myRoleManager,roleName)){
+            if(roleDoesntExist(myRoleManager,roleName))
                 newRole = projectRoleSet.createRole(roleName);
-            }
-            else{
+            else
                 newRole = myRoleManager.getRoleByName(roleName);
-            }
+
+            //Getting roles persistent ID
             String persistentID = newRole.getPersistentID();
             HumanResource newResource = myResourceBuilder.withName(name).withID("-1").withPhone(phoneNum)
                             .withEmail(email).withStandardRate(hourlyFee)
