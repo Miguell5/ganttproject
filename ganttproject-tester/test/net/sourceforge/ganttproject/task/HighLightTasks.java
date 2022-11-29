@@ -30,7 +30,6 @@ import net.sourceforge.ganttproject.test.task.TaskTestCase;
 /**
  * Tests to simulate Tasks High Lighting when they are complete
  *
- * @author Grupo abelhinha
  */
 public class HighLightTasks extends TaskTestCase {
   private static Color DEFAULT_TASK_COLOR = new Color(140, 182, 206);

@@ -28,9 +28,8 @@ import net.sourceforge.ganttproject.task.TaskContainmentHierarchyFacade;
 import net.sourceforge.ganttproject.test.task.TaskTestCase;
 
 /**
- * Tests to simulate Tasks High Lighting when they are complete
+ * Tests to simulate import of an excel file with resources
  *
- * @author Grupo abelhinha
  */
 public class TesteImportExcelResources extends TaskTestCase {
 
