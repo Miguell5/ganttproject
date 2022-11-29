@@ -446,7 +446,7 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
     if(!isInCompletedTaskArray(task)) {
       completedTasks.add(task);
       if(visibility) {
-        task.setHighlight();
+        task.setHighlightON();
       }
     }
   }
@@ -463,7 +463,7 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
     JFrame jFrame = new JFrame();
     JOptionPane.showMessageDialog(jFrame, "Highlighting completed tasks");
     for(Task t: completedTasks)
-      t.setHighlight();
+      t.setHighlightON();
   }
   public void restoreColor() {
     JFrame jFrame = new JFrame();

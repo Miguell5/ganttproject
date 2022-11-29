@@ -28,52 +28,26 @@ import net.sourceforge.ganttproject.task.TaskContainmentHierarchyFacade;
 import net.sourceforge.ganttproject.test.task.TaskTestCase;
 
 /**
- * Tests for cost calculations
+ * Tests to simulate Tasks High Lighting when they are complete
  *
- * @author dbarashev (Dmitry Barashev)
+ * @author Grupo abelhinha
  */
 public class CostAlgorithmTest extends TaskTestCase {
   public void testSupertaskCost() {
-    Task supertask = createTask();
-    Task subtask1 = createTask();
-    Task subtask2 = createTask();
-    TaskContainmentHierarchyFacade hierarchy = getTaskManager().getTaskHierarchy();
-    hierarchy.move(subtask1, supertask);
-    hierarchy.move(subtask2, supertask);
-    supertask.getCost().setCalculated(true);
-    subtask1.getCost().setCalculated(false);
-    subtask1.getCost().setValue(BigDecimal.valueOf(5));
-    subtask2.getCost().setCalculated(false);
-    subtask2.getCost().setValue(BigDecimal.valueOf(15));
-    assertEquals(BigDecimal.valueOf(20), supertask.getCost().getValue());
+    TaskImpl task1 = (TaskImpl) createTask();
+    TaskImpl task2 = (TaskImpl) createTask();
+    TaskImpl task3 = (TaskImpl) createTask();
+    TaskImpl task4 = (TaskImpl) createTask();
+    task1.setCompletionPercentage(100);
+    task2.setCompletionPercentage(50);
+    task3.setCompletionPercentage(100);
+    task4.setCompletionPercentage(5);
+    task1.setHighlightON()
+    task2.setHighlightON()
+    task3.setHighlightON()
+    task4.setHighlightON()
 
-    supertask.getCost().setCalculated(false);
-    supertask.getCost().setValue(BigDecimal.valueOf(10));
-    assertEquals(BigDecimal.valueOf(10), supertask.getCost().getValue());
   }
 
-  public void testResourceCost() {
-    TaskManagerBuilder builder = TestSetupHelper.newTaskManagerBuilder();
-    setTaskManager(builder.build());
-    HumanResource joe = new HumanResource("Joe", 1, builder.getResourceManager());
-    joe.setStandardPayRate(BigDecimal.valueOf(5));
-
-    HumanResource jane = new HumanResource("Jane", 1, builder.getResourceManager());
-    jane.setStandardPayRate(BigDecimal.valueOf(10));
-
-    builder.getResourceManager().add(joe);
-    builder.getResourceManager().add(jane);
-
-    Task t = createTask();
-    t.setDuration(t.getManager().createLength(2));
-    t.getAssignmentCollection().addAssignment(joe).setLoad(100f);
-    t.getAssignmentCollection().addAssignment(jane).setLoad(50f);
-    t.getCost().setCalculated(true);
-    assertEquals(BigDecimal.valueOf(20f), t.getCost().getValue());
-
-    t.getCost().setCalculated(false);
-    t.getCost().setValue(BigDecimal.valueOf(10));
-    assertEquals(BigDecimal.valueOf(10), t.getCost().getValue());
-  }
 
 }

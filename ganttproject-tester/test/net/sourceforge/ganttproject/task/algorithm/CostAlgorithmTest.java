@@ -34,7 +34,6 @@ import net.sourceforge.ganttproject.test.task.TaskTestCase;
  */
 public class CostAlgorithmTest extends TaskTestCase {
   public void testSupertaskCost() {
-    Task supertask = createTask();
     Task subtask1 = createTask();
     Task subtask2 = createTask();
     TaskContainmentHierarchyFacade hierarchy = getTaskManager().getTaskHierarchy();

@@ -138,7 +138,7 @@ public interface Task extends MutableTask {
    *         color, super task color or default color)
    */
 
-  void setHighlight();
+  void setHighlightON();
 
   void restoreColor();
   Color getColor();

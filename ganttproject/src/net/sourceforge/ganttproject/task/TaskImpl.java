@@ -470,7 +470,7 @@ public class TaskImpl implements Task {
     return result;
   }
 
-  public void setHighlight() {
+  public void setHighlightON() {
     highlight = true;
   }
 
