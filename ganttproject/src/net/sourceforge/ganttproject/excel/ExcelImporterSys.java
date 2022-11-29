@@ -23,11 +23,12 @@ public class ExcelImporterSys {
     //ERROR MESSAGES
     private static final String FILE_NOT_FOUND = "File not found!";
     private static final String INPUT_ERROR = "Input error!";
+    private static final int MAX_COLUMNS = 5;
 
     /**     Excel workbook      */
     private XSSFWorkbook wb;
 
-    /**     CustomPropertyHolder = HumanResource interface      */
+
     private List<HumanResource> resources;
 
     public ExcelImporterSys(String filePath){
@@ -58,13 +59,14 @@ public class ExcelImporterSys {
         ArrayList<Cell> rowCells = new ArrayList<>();
         Cell cell = null;
         int i;
-        for(i = 0; i < 5; i++){
+        for(i = 0; i < MAX_COLUMNS; i++){
             cell = row.getCell(i);
             rowCells.add(cell);
         }
         return rowCells;
     }
 
+    /** Creates resources from the excel file */
     public void makeResources(HumanResourceManager myHRManager, RoleManager myRoleManager, int sheetIndex){
         Iterator<Row> it = getRowIterator(sheetIndex);
         ArrayList<Cell> resourceInfo = new ArrayList<>();
@@ -72,26 +74,27 @@ public class ExcelImporterSys {
         while(it.hasNext()){
             Row r = it.next();
             resourceInfo = getCellsInRow(r);
-            String name = resourceInfo.get(0).toString();
-            String phoneNum = resourceInfo.get(1).toString();
-            String email = resourceInfo.get(2).toString();
-            String hourlyFee = resourceInfo.get(3).toString();
-            String roleName = resourceInfo.get(4).toString();
+            if(resourceInfo.get(0) != null){
+                String name = resourceInfo.get(0).toString();
+                String phoneNum = resourceInfo.get(1).toString();
+                String email = resourceInfo.get(2).toString();
+                String hourlyFee = resourceInfo.get(3).toString();
+                String roleName = resourceInfo.get(4).toString();
+                HumanResourceManager.ResourceBuilder myResourceBuilder = myHRManager.newResourceBuilder();
+                Role newRole = null;
+                if(roleDoesntExist(myRoleManager,roleName))
+                    newRole = projectRoleSet.createRole(roleName);
+                else
+                    newRole = myRoleManager.getRoleByName(roleName);
 
-            HumanResourceManager.ResourceBuilder myResourceBuilder = myHRManager.newResourceBuilder();
-            Role newRole = null;
-            if(roleDoesntExist(myRoleManager,roleName)){
-                newRole = projectRoleSet.createRole(roleName);
+                //Getting roles persistent ID
+                String persistentID = newRole.getPersistentID();
+                HumanResource newResource = myResourceBuilder.withName(name).withID("-1").withPhone(phoneNum)
+                        .withEmail(email).withStandardRate(hourlyFee)
+                        .withRole(persistentID).build();
+                newResource.setRole(newRole);
+                resources.add(newResource);
             }
-            else{
-                newRole = myRoleManager.getRoleByName(roleName);
-            }
-            String persistentID = newRole.getPersistentID();
-            HumanResource newResource = myResourceBuilder.withName(name).withID("-1").withPhone(phoneNum)
-                            .withEmail(email).withStandardRate(hourlyFee)
-                            .withRole(persistentID).build();
-            newResource.setRole(newRole);
-            resources.add(newResource);
         }
     }
 
