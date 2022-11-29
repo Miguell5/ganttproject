@@ -44,20 +44,6 @@ public class ExcelImporterSys {
         }
     }
 
-    /*public ExcelImporterSys(String fileName){
-        this.resources = new ArrayList<>();
-        try{
-            FileInputStream fp = new FileInputStream(filePath);
-            wb = new XSSFWorkbook(fp);
-        }catch(FileNotFoundException e){
-            JFrame jFrame = new JFrame();
-            JOptionPane.showMessageDialog(jFrame, e.getMessage());
-        }catch (IOException e){
-            JFrame jFrame2 = new JFrame();
-            JOptionPane.showMessageDialog(jFrame2, e.getMessage());
-        }
-    }*/
-
     public XSSFWorkbook getBook(){
         return wb;
     }
@@ -72,7 +58,7 @@ public class ExcelImporterSys {
         ArrayList<Cell> rowCells = new ArrayList<>();
         Cell cell = null;
         int i;
-        for(i = 0; i < 3; i++){
+        for(i = 0; i < 5; i++){
             cell = row.getCell(i);
             rowCells.add(cell);
         }
@@ -87,8 +73,10 @@ public class ExcelImporterSys {
             Row r = it.next();
             resourceInfo = getCellsInRow(r);
             String name = resourceInfo.get(0).toString();
-            String hourlyFee = resourceInfo.get(1).toString();
-            String roleName = resourceInfo.get(2).toString();
+            String phoneNum = resourceInfo.get(1).toString();
+            String email = resourceInfo.get(2).toString();
+            String hourlyFee = resourceInfo.get(3).toString();
+            String roleName = resourceInfo.get(4).toString();
 
             HumanResourceManager.ResourceBuilder myResourceBuilder = myHRManager.newResourceBuilder();
             Role newRole = null;
@@ -99,30 +87,16 @@ public class ExcelImporterSys {
                 newRole = myRoleManager.getRoleByName(roleName);
             }
             String persistentID = newRole.getPersistentID();
-            HumanResource newResource = myResourceBuilder.withName(name).withID("-1")
-                            .withRole(persistentID).withStandardRate(hourlyFee).build();
-            //HumanResource resource = myHRManager.create(name, -1);
-            //myHRManager.add(resource);
+            HumanResource newResource = myResourceBuilder.withName(name).withID("-1").withPhone(phoneNum)
+                            .withEmail(email).withStandardRate(hourlyFee)
+                            .withRole(persistentID).build();
+            newResource.setRole(newRole);
             resources.add(newResource);
         }
     }
 
     private boolean roleDoesntExist(RoleManager myRoleManager, String roleName){
-        /*Role[] roles = myRoleManager.getProjectLevelRoles();
-        for(int i = 0; i < roles.length; i++){
-            if (roleName == roles[i].getName())
-                return false;
-        }
-        return true;*/
         return (myRoleManager.getRoleByName(roleName) == null);
-    }
-
-    public void resourceNames(){
-        Iterator<HumanResource> it = resources.iterator();
-        while(it.hasNext()){
-            HumanResource r = it.next();
-            System.out.println(r.getName());
-        }
     }
 
 }
