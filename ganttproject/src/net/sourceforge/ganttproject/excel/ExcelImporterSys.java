@@ -74,26 +74,27 @@ public class ExcelImporterSys {
         while(it.hasNext()){
             Row r = it.next();
             resourceInfo = getCellsInRow(r);
-            String name = resourceInfo.get(0).toString();
-            String phoneNum = resourceInfo.get(1).toString();
-            String email = resourceInfo.get(2).toString();
-            String hourlyFee = resourceInfo.get(3).toString();
-            String roleName = resourceInfo.get(4).toString();
+            if(resourceInfo.get(0) != null){
+                String name = resourceInfo.get(0).toString();
+                String phoneNum = resourceInfo.get(1).toString();
+                String email = resourceInfo.get(2).toString();
+                String hourlyFee = resourceInfo.get(3).toString();
+                String roleName = resourceInfo.get(4).toString();
+                HumanResourceManager.ResourceBuilder myResourceBuilder = myHRManager.newResourceBuilder();
+                Role newRole = null;
+                if(roleDoesntExist(myRoleManager,roleName))
+                    newRole = projectRoleSet.createRole(roleName);
+                else
+                    newRole = myRoleManager.getRoleByName(roleName);
 
-            HumanResourceManager.ResourceBuilder myResourceBuilder = myHRManager.newResourceBuilder();
-            Role newRole = null;
-            if(roleDoesntExist(myRoleManager,roleName))
-                newRole = projectRoleSet.createRole(roleName);
-            else
-                newRole = myRoleManager.getRoleByName(roleName);
-
-            //Getting roles persistent ID
-            String persistentID = newRole.getPersistentID();
-            HumanResource newResource = myResourceBuilder.withName(name).withID("-1").withPhone(phoneNum)
-                            .withEmail(email).withStandardRate(hourlyFee)
-                            .withRole(persistentID).build();
-            newResource.setRole(newRole);
-            resources.add(newResource);
+                //Getting roles persistent ID
+                String persistentID = newRole.getPersistentID();
+                HumanResource newResource = myResourceBuilder.withName(name).withID("-1").withPhone(phoneNum)
+                        .withEmail(email).withStandardRate(hourlyFee)
+                        .withRole(persistentID).build();
+                newResource.setRole(newRole);
+                resources.add(newResource);
+            }
         }
     }
 
