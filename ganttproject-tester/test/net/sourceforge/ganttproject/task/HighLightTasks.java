@@ -37,6 +37,8 @@ public class HighLightTasks extends TaskTestCase {
   private final ColorOption myDefaultTaskColorOption;
     @Test
     void testHighLightTasks() {
+
+    myDefaultTaskColorOption = new DefaultTaskColorOption(DEFAULT_TASK_COLOR);
     TaskImpl task1 = (TaskImpl) createTask();
     TaskImpl task2 = (TaskImpl) createTask();
     TaskImpl task3 = (TaskImpl) createTask();
@@ -50,9 +52,9 @@ public class HighLightTasks extends TaskTestCase {
     task3.setHighlightON();
     task4.setHighlightON();
     assert(task1.getColor() == COLOR.RED);
-    assert(task2.getColor() == DEFAULT_TASK_COLOR);
+    assert(task2.getColor() == myDefaultTaskColorOption.getValue());
     assert(task3.getColor() == COLOR.RED);
-    assert(task4.getColor() == DEFAULT_TASK_COLOR);
+    assert(task4.getColor() == myDefaultTaskColorOption.getValue());
     }
 
 
