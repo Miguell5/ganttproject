@@ -33,7 +33,7 @@ public interface TaskManagerConfig {
 
   HumanResourceManager getResourceManager();
 
-  RoleManagerImpl getMyRoleManager();
+ // RoleManagerImpl getMyRoleManager();
 
   URL getProjectDocumentURL();
 
