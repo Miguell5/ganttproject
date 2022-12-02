@@ -1,0 +1,15 @@
+----------------------------------------------------Guilherme Abrantes 60971-------------------------------------------------------
+Review do pattern Prototype Pattern, concordo com a identificação deste padrão acho que o meu colega deu uma boa explicação
+-------------------------------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------Daniel Eugénio 59797-------------------------------------------------------
+Review do pattern Iterator, concordo com o que foi dito pelo colega, é bastante evidente a utilização deste padrão e não tenho 
+nada a acrescentar.
+-----------------------------------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------Francisco Silveira 60816-------------------------------------------------------
+Review do Template Method Pattern:
+	Concordo com o que o colega disse. Facilmente idenficamos que este método chama o método da classe super e adiciona
+	novo código.
+	
+-------------------------------------------------------------------------------------------------------------------------------     

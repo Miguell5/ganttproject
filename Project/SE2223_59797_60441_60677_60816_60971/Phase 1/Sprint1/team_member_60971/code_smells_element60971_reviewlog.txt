@@ -1,0 +1,13 @@
+----------------------------------------------------Daniel Eugénio 59797-------------------------------------------------------
+Concordo com o code smell nº3, penso que o code smell mencionado é corretamente identificado. No entanto, penso que também 
+poderia ser considerado Primitive Obsession, pelo uso excessivo de atributos com o tipo inteiro.
+-------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------Miguel Agostinho 60677-------------------------------------------------------
+Concordo com o code smell nº2 pois, também acho desnecessário a criação desta classe porque apenas tem um construtor sem nenhum
+método.
+-------------------------------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------Rafael Costa 60441-------------------------------------------------------
+O exposto no code smell nº1, a meu ver pode não evidênciar que pertence algo precisa de ser feito no futuro, poderá também ser 
+algo que simplesmente deixou de ser necessário de utilizar e para "jogar pelo seguro" o troço de código foi mantido em comentário
+-------------------------------------------------------------------------------------------------------------------------------

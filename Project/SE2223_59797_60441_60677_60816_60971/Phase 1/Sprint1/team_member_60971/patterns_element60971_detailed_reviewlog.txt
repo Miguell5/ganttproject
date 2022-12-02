@@ -1,0 +1,13 @@
+----------------------------------------------------Miguel Agostinho 60677-------------------------------------------------------
+Review do pattern nº2, este pattern foi bem identificado e o meu colega fez uma boa explicação do mesmo pois, é notório o uso
+de um "undo" para voltar atrás.
+---------------------------------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------Francisco Silveira 60816-------------------------------------------------------
+	Iterator pattern :
+		Concordo com o que o colega disse. Facilmente identificamos um padrão pela criaçáo de um iterador.
+-------------------------------------------------------------------------------------------------------------------------------      
+
+----------------------------------------------------Rafael Costa 60441-------------------------------------------------------
+	Singleton Pattern: Concordo com a identificação do padrão, mas penso que não é explicito a função do padrão
+---------------------------------------------------------------------------------------------------      

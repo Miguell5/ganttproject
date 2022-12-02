@@ -1,0 +1,22 @@
+----------------------------------------------------Guilherme Abrantes 60971-------------------------------------------------------
+Review do code smell Speculative Generality, este code smell foi bem encontrado a explicação está bastante boa tenho apenas a acrescentar 
+que além disto não existe qualquer tipo de comentário a explicar o que aquela classe poderia acrescentar no futuro, dificultando ainda
+mais o código.
+---------------------------------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------Francisco Silveira 60816------------------------------------------------------
+Review duplicated code:
+	Concordo com o que o colega disse. Em alguns casos, guardar as variáveis que utilizamos várias vezes é extremamente 
+	importante pois, por exemplo, pode ser necessário correr grandes estruturas de dados para encontrar esses valores
+	para além de retirar o código duplicado.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+
+----------------------------------------------------Francisco Silveira 60816------------------------------------------------------
+Review Not Commented:
+	Concordo com o que o colega disse. A falta de comentários torna o código pouco legível e torna o trabalho de quem 
+	vai trabalhar nele muito mais difícil. Os comentários são uma parte essencial do código.
+
+------------------------------------------------------------------------------------------------------------------------------
+

@@ -1,0 +1,57 @@
+----------------------------------------------------Daniel Eugénio 59797-------------------------------------------------------
+-Review do pattern nº3 (Prototype), concordo com o colega, é evidente o uso deste padrão, mais concretamente na linha 246. Podemos
+ainda ver o protótipo a ser usado mais à frente, na linha 257. 
+-Review do pattern Iterator, concordo com o que foi dito pelo colega, é bastante evidente a utilização deste padrão e não tenho 
+nada a acrescentar.
+-Sobre o pattern nº2, concordo com o padrão identificado, no entanto, a meu ver, o iterador serve mais o propósito de percorrer 
+uma estrutura de dados sem mexer na estrutura em si, algo que não acontece com um ciclo for ou while, e não tanto com a eficiência.
+-Review do code smell nº1 (Switch Statement), é bem identificado, o case Characters não tem qualquer bloco de código, resultando
+num switch com apenas um caso que, como foi bem evidenciado pelo colega.
+-Review do code smell Not Commented, concordo com a opinião do colega. Apesar desta classe ser relativamente simples, 
+os comentários são boas adições ao código e podem ser cruciais para o entendimento de pessoas novas, tanto ao código
+como ao mundo da programação.
+-Concordo com o code smell nº3, penso que o code smell mencionado é corretamente identificado. No entanto, penso que também 
+poderia ser considerado Primitive Obsession, pelo uso excessivo de atributos com o tipo inteiro.
+--------------------------------------------------------------------------------------------------------------------------------- 
+
+----------------------------------------------------Miguel Agostinho 60677-------------------------------------------------------
+-Concordo com o pattern nº1 pois, conseguimos ver facilmente a criação de um iterador com o intuito de percorrer uma coleção
+de objetos.
+-Review do pattern nº2, aqui podemos observer um padrão "Decorator" bem identificado pois, podemos ver claramente o objeto "this"
+a ser enviado com o método addDecoration para obter um novo comportamento.
+-Review do pattern nº2, este pattern foi bem identificado e o meu colega fez uma boa explicação do mesmo pois, é notório o uso
+de um "undo" para voltar atrás.
+-Review do code smell nº1, concordo com o meu colega pois a repetição de código torna-o mais dificil de ler e entender e
+a solução que forneceu também me parece boa.
+-Concordo com o code smell nº2 pois, a negação de uma condição no primeiro if pode causar uma dificuldade de percepção do codigo.
+-Concordo com o code smell nº2 pois, também acho desnecessário a criação desta classe porque apenas tem um construtor sem nenhum
+método.
+--------------------------------------------------------------------------------------------------------------------------------- 
+
+----------------------------------------------------Rafael Costa 60441-------------------------------------------------------
+-Sobre o pattern nº1, padrão bem identificado
+-Sobre o pattern nº3, concordo na plenitude com o exposto a cerca do padrão prototype, diria completo e explicito
+-Singleton Pattern: Concordo com a identificação do padrão, mas penso que não é explicito a função do padrão
+-O exposto no code smell nº1, a meu ver pode não evidênciar que pertence algo precisa de ser feito no futuro, poderá também ser 
+algo que simplesmente deixou de ser necessário de utilizar e para "jogar pelo seguro" o troço de código foi mantido em comentário
+-Review do long parameter list.
+Concordo com o referido, é um bad smell code que devemos evitar fazer, pois torna o código confuso e denso.
+-Concordo com o code smell nº1, pois não nos serve de nada ter condições no switch nas quais não utilizamos, para isso deveria 
+ser inserido default no final do switch ou eliminado completamente aqueles "cases" que não estão a ser utilizados
+--------------------------------------------------------------------------------------------------------------------------------- 
+
+----------------------------------------------------Guilherme Abrantes 60971-------------------------------------------------------
+-Review do pattern Prototype Pattern, concordo com a identificação deste padrão acho que o meu colega deu uma boa explicação
+-Review do pattern Façade , temos aqui um padrão bastante explicito e muito bem encontrado que não levanta duvidas, claramente aquela
+classe é uma façade que vai tornar as subclasses mais fáceis de usar
+-Review do pattern	Iterator , vemos aqui um padrão bem identificado que não levanta grandes dúvidas pela criação de um iterador que 
+fornece uma maneira de percorrer uma coleção de objetos sem expor sua implementação.
+-Review do code smell Divergent Change, acho que foi um code smell bem encontrado sendo difícil a alteração do código pois vamos ter de alterar todos os números
+e também dificulta a legibilidade, a solução encontrada acho que é perfeita pois resolveria estes dois problemas mesmo que estes números só tenham sido usados 
+neste método variáveis locais com nomes explicativos tornaria o código muito mais claro.
+-Review do code smell Speculative Generality, este code smell foi bem encontrado a explicação está bastante boa tenho apenas a acrescentar 
+que além disto não existe qualquer tipo de comentário a explicar o que aquela classe poderia acrescentar no futuro, dificultando ainda
+mais o código.
+-Review do code smell Duplicated Code , aqui temos code smell muito bem encontrado esta duplicação de código poderia passar facilmente 
+despercebida, porém são  estas diferenças que tornam tudo mais legível, a solução de criar as variáveis locais acho que seria o ideal.
+--------------------------------------------------------------------------------------------------------------------------------- 

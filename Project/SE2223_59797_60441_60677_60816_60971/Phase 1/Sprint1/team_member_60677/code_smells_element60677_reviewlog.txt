@@ -1,0 +1,19 @@
+----------------------------------------------------Guilherme Abrantes 60971-------------------------------------------------------
+Review do code smell Duplicated Code , aqui temos code smell muito bem encontrado esta duplicação de código poderia passar facilmente 
+despercebida, porém são  estas diferenças que tornam tudo mais legível, a solução de criar as variáveis locais acho que seria o ideal.
+-------------------------------------------------------------------------------------------------------------------------------
+
+
+----------------------------------------------------Daniel Eugénio 59797-------------------------------------------------------
+Review do code smell nº1 (Switch Statement), é bem identificado, o case Characters não tem qualquer bloco de código, resultando
+num switch com apenas um caso que, como foi bem evidenciado pelo colega.
+-------------------------------------------------------------------------------------------------------------------------------
+
+----------------------------------------------------Francisco Silveira 60816-------------------------------------------------------
+
+Review code smell nº3 :
+
+	Concordo com o que o colega disse. A falta de comentários torna o código pouco legível e torna o trabalho de quem 
+	vai trabalhar nele muito mais difícil.Os comentários são uma parte essencial do código.
+-------------------------------------------------------------------------------------------------------------------------------   
+

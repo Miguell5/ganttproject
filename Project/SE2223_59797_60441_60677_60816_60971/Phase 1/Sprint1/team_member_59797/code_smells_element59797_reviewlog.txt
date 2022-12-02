@@ -1,0 +1,17 @@
+----------------------------------------------------Guilherme Abrantes 60971-------------------------------------------------------
+Review do code smell Divergent Change, acho que foi um code smell bem encontrado sendo difícil a alteração do código pois vamos ter de alterar todos os números
+e também dificulta a legibilidade, a solução encontrada acho que é perfeita pois resolveria estes dois problemas mesmo que estes números só tenham sido usados 
+neste método variáveis locais com nomes explicativos tornaria o código muito mais claro.
+-------------------------------------------------------------------------------------------------------------------------------
+
+
+----------------------------------------------------Rafael Costa 60441-------------------------------------------------------
+Review do long parameter list.
+Concordo com o referido, é um bad smell code que devemos evitar fazer, pois torna o código confuso e denso.
+-------------------------------------------------------------------------------------------------------------------------------
+
+
+----------------------------------------------------Miguel Agostinho 60677-------------------------------------------------------
+Review do code smell nº1, concordo com o meu colega pois a repetição de código torna-o mais dificil de ler e entender e
+a solução que forneceu também me parece boa.
+-------------------------------------------------------------------------------------------------------------------------------
