@@ -27,16 +27,30 @@ import net.sourceforge.ganttproject.task.Task;
 import net.sourceforge.ganttproject.task.TaskContainmentHierarchyFacade;
 import net.sourceforge.ganttproject.test.task.TaskTestCase;
 
+import org.apache.poi.xssf.usermodel.*;
+import org.apache.poi.ss.usermodel.*;
+
 /**
  * Tests to simulate import of an excel file with resources
  *
  */
 public class TesteImportExcelResources extends TaskTestCase {
 
+    TestSetupHelper helper = new TestSetupHelper();
+
     @Test
     void testImportExcelResources() {
-      ExcelImporterSys sys = new ExcelImporterSys("test.xlsx");
-      //asserts....
+        HumanResourceManager resourceManager = helper.getResourceManager();
+        int numResources = resourceManager.getResources().length();
+        int i = 0;
+        ExcelImporterSys sys = new ExcelImporterSys("Livro1.xlsx");
+        Iterator<Row> it = sys.getRowIterator(0);
+        while(it.hasNext()){
+            i++;
+        }
+        RoleManager roleManager = helper.getMyRoleManager();
+        sys.makeResources(resourceManager, roleManager, 0);
+        assert(numResources == i);
     }
 
 

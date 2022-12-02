@@ -192,6 +192,7 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
 
   private static Runnable ourQuitCallback;
 
+  //private ExcelImporterSys myExcelImporter;
 
   public GanttProject(boolean isOnlyViewer) {
     System.err.println("Creating main frame...");
@@ -246,6 +247,8 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
       public HumanResourceManager getResourceManager() {
         return GanttProject.this.getHumanResourceManager();
       }
+
+      //public ExcelImporterSys getExcelImp() { return GanttProject.this.getExcelImporter(); }
 
       @Override
       public URL getProjectDocumentURL() {
@@ -1171,6 +1174,13 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
   public TaskManager getTaskManager() {
     return myTaskManager;
   }
+
+  /*public ExcelImportsys getExcelImporter(){
+    if(myExcelImporter == null){
+      return new ExcelImporterSys()
+    }
+    return myExcelImporter;
+  }*/
 
   @Override
   public RoleManager getRoleManager() {

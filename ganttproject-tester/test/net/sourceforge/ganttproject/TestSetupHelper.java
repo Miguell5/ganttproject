@@ -63,6 +63,11 @@ public class TestSetupHelper {
         }
 
         @Override
+        public RoleManager getMyRoleManager() {
+            return myRoleManager;
+        }
+
+        @Override
         public URL getProjectDocumentURL() {
             return null;
         }

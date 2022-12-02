@@ -27,6 +27,7 @@ import javax.swing.Action;
 import javax.swing.JMenu;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import javax.swing.JFrame;
 
 import net.sourceforge.ganttproject.GPLogger;
 import net.sourceforge.ganttproject.IGanttProject;
@@ -53,6 +54,8 @@ import net.sourceforge.ganttproject.roles.*;
  * @author dbarashev (Dmitry Barashev)
  */
 public class HelpMenu {
+
+  private static final String IMPORT_ERROR = "Already imported the resources.";
 
   private final AboutAction myAboutAction;
   private final VisibilityAction myVisibilityAction;
@@ -116,8 +119,12 @@ public class HelpMenu {
       ExcelImporterSys sys = new ExcelImporterSys("Livro1.xlsx");
       HumanResourceManager myHRManager = myProject.getHumanResourceManager();
       RoleManager myRoleManager = myProject.getRoleManager();
-      sys.makeResources(myHRManager, myRoleManager, 0);
-      //sys.resourceNames();
+      if(sys.alreadyImported()){
+        JFrame jFrame = new JFrame();
+        JOptionPane.showMessageDialog(jFrame, IMPORT_ERROR);
+      }
+      else
+        sys.makeResources(myHRManager, myRoleManager, 0);
     }
   }
 

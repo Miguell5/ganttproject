@@ -11,12 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Iterator;
 
-import javax.swing.*;
 import net.sourceforge.ganttproject.CustomPropertyHolder;
 import net.sourceforge.ganttproject.CustomPropertyManager;
 import net.sourceforge.ganttproject.resource.*;
 import net.sourceforge.ganttproject.roles.*;
 import net.sourceforge.ganttproject.task.*;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class ExcelImporterSys {
 
@@ -28,20 +30,19 @@ public class ExcelImporterSys {
     /**     Excel workbook      */
     private XSSFWorkbook wb;
 
-
-    private List<HumanResource> resources;
+    private boolean imported;
 
     public ExcelImporterSys(String filePath){
-        this.resources = new ArrayList<>();
+        this.imported = false;
         try{
             FileInputStream fp = new FileInputStream(filePath);
             wb = new XSSFWorkbook(fp);
         }catch(FileNotFoundException e){
             JFrame jFrame = new JFrame();
-            JOptionPane.showMessageDialog(jFrame, e.getMessage());
+            JOptionPane.showMessageDialog(jFrame, FILE_NOT_FOUND);
         }catch (IOException e){
             JFrame jFrame2 = new JFrame();
-            JOptionPane.showMessageDialog(jFrame2, e.getMessage());
+            JOptionPane.showMessageDialog(jFrame2, INPUT_ERROR);
         }
     }
 
@@ -87,15 +88,18 @@ public class ExcelImporterSys {
                 else
                     newRole = myRoleManager.getRoleByName(roleName);
 
-                //Getting roles persistent ID
                 String persistentID = newRole.getPersistentID();
                 HumanResource newResource = myResourceBuilder.withName(name).withID("-1").withPhone(phoneNum)
                         .withEmail(email).withStandardRate(hourlyFee)
                         .withRole(persistentID).build();
                 newResource.setRole(newRole);
-                resources.add(newResource);
             }
         }
+        this.imported = true;
+    }
+
+    public boolean alreadyImported() {
+        return this.imported;
     }
 
     private boolean roleDoesntExist(RoleManager myRoleManager, String roleName){
