@@ -1,1 +1,0 @@
-As a user I want to be able to import resources to the system using excel so that It will not be necessary to add a lots of resources by hand

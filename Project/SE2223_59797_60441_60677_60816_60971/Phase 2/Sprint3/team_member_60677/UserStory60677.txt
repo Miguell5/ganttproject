@@ -1,3 +1,0 @@
-As a user I want to add tasks so that I can manage my project.
-
-As a user I want to highlight completed tasks so that I can see these tasks better.

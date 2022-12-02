@@ -1,1 +1,0 @@
-As a user I want to be able to view all the resources in the system so that I don't add the same person twice
