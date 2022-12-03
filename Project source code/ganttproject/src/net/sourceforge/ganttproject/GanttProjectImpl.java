@@ -193,6 +193,21 @@ return;
   }
 
   @Override
+  public void importedWarning(){
+
+  }
+
+  @Override
+  public boolean getImportable(){
+    return false;
+  }
+
+  @Override
+  public void imported(){
+
+  }
+
+  @Override
   public Document getDocument() {
     return myDocument;
   }
@@ -249,6 +264,11 @@ return;
       myTimeUnitStack = new GPTimeUnitStack();
       myCalendar = calendar;
       myDefaultTaskColorOption = new DefaultTaskColorOption(DEFAULT_TASK_COLOR);
+    }
+
+    @Override
+    public RoleManager getMyRoleManager(){
+      return null;
     }
 
     @Override

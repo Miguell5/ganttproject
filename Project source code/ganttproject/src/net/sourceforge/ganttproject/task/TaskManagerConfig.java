@@ -15,6 +15,7 @@ import biz.ganttproject.core.option.ColorOption;
 import biz.ganttproject.core.time.TimeUnitStack;
 import net.sourceforge.ganttproject.gui.NotificationManager;
 import net.sourceforge.ganttproject.resource.HumanResourceManager;
+import net.sourceforge.ganttproject.roles.*;
 
 import java.awt.*;
 import java.net.URL;
@@ -33,7 +34,7 @@ public interface TaskManagerConfig {
 
   HumanResourceManager getResourceManager();
 
-  RoleManagerImpl getMyRoleManager();
+  RoleManager getMyRoleManager();
 
   URL getProjectDocumentURL();
 

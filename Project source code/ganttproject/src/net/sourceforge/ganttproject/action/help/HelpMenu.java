@@ -116,15 +116,18 @@ public class HelpMenu {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-      ExcelImporterSys sys = new ExcelImporterSys("Livro1.xlsx");
+      ExcelImporterSys sys = new ExcelImporterSys("Livro1.xlsx"); //Change Excel file name here
       HumanResourceManager myHRManager = myProject.getHumanResourceManager();
       RoleManager myRoleManager = myProject.getRoleManager();
-      if(sys.alreadyImported()){
+      if(myProject.getImportable()){
+        sys.makeResources(myHRManager, myRoleManager, 0);
+        myProject.importedWarning();
+      }
+      else {
         JFrame jFrame = new JFrame();
         JOptionPane.showMessageDialog(jFrame, IMPORT_ERROR);
       }
-      else
-        sys.makeResources(myHRManager, myRoleManager, 0);
+      myProject.imported();
     }
   }
 

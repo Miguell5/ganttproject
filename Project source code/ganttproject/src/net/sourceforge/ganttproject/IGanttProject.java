@@ -104,4 +104,10 @@ public interface IGanttProject {
   // CustomColumnsStorage getCustomColumnsStorage();
 
   List<GanttPreviousState> getBaselines();
+
+  public void imported();
+
+  public boolean getImportable();
+
+  public void importedWarning();
 }

@@ -123,6 +123,8 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
 
   private boolean visibility;
 
+  private boolean importable;
+
   /**
    * GanttGraphicArea for the calendar with Gantt
    */
@@ -199,6 +201,7 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
     ToolTipManager.sharedInstance().setInitialDelay(200);
     ToolTipManager.sharedInstance().setDismissDelay(60000);
     visibility = false;
+    importable = true;
     myCalendar.addListener(new GPCalendarListener() {
       @Override
       public void onCalendarChange() {
@@ -248,7 +251,10 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
         return GanttProject.this.getHumanResourceManager();
       }
 
-      //public ExcelImporterSys getExcelImp() { return GanttProject.this.getExcelImporter(); }
+      @Override
+      public RoleManager getMyRoleManager(){
+        return myRoleManager;
+      }
 
       @Override
       public URL getProjectDocumentURL() {
@@ -445,6 +451,7 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
   public void changeVisibility(){
     visibility = !visibility;
   }
+
   public void addCompletedTaskArray(Task task){
     if(!isInCompletedTaskArray(task)) {
       completedTasks.add(task);
@@ -453,6 +460,23 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
       }
     }
   }
+
+  @Override
+  public void imported(){
+    importable = false;
+  }
+
+  @Override
+  public boolean getImportable(){
+    return this.importable;
+  }
+
+  @Override
+  public void importedWarning(){
+    JFrame jFrame = new JFrame();
+    JOptionPane.showMessageDialog(jFrame, "Resources Imported");
+  }
+
   public boolean isInCompletedTaskArray(Task task){
     return completedTasks.contains(task);
   }
