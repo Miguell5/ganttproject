@@ -24,8 +24,13 @@ git submodule update --remote
         a outros recursos
  
 -----> Identificação do grupo <-----
+
 Miguell5 -> Miguel Agostinho 60677
+
 dannythe21st/ Daniel Eugénio -> Daniel Eugénio 59797
+
 guibati -> Guilherme Abrantes 60971
+
 rcosta349 -> Rafael Costa 60441
+
 fjsilveira -> Francisco Silveira 60816
