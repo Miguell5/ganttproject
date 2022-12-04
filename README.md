@@ -10,6 +10,10 @@ rcosta349 -> Rafael Costa 60441
 
 fjsilveira -> Francisco Silveira 60816
 
+-----> Como utilizar as funcionalidades <-----
+
+Ambas as funcionalidades estão disponiveis no menu Ajuda.
+
 -----> Iniciar o sub repositorio SE2223_59797_60441_60677_60816_60971 <----- 
 
 Para visualizar os ficheiro da pasta project é necessário inicializar o submodule
